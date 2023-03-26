@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Define some variables for colors
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;34m'
+NC='\033[0m' # No Color
+
+# Define a function to display a message with a specified color
+function display_message() {
+    echo -e "${1}${2}${NC}"
+}
+
+# Display the ASCII art and some introductory messages
+display_message ${YELLOW} "░ ▓██▓ ░ "
+display_message ${YELLOW} "░██▓ ▒██▒ ░ ████▓▒░ ░ ████▓▒░ ▒██▒ ░ "
+display_message ${YELLOW} "░ ▒▓ ░▒▓░ ░ ▒░▒░▒░ ░ ▒░▒░▒░ ▒ ░░ "
+display_message ${YELLOW} " ░▒ ░ ▒░ ░ ▒ ▒░ ░ ▒ ▒░ ░ "
+display_message ${YELLOW} " ░░ ░ ░ ░ ░ ▒ ░ ░ ░ ▒ ░ "
+display_message ${YELLOW} " ░ ░ ░ ░ ░ "
+display_message ${YELLOW} "\n[+] Welcome to ROOT TERMUX\n"
+
+# Display some information about the script
+display_message ${BLUE} "[*] Automation started"
+sleep 1
+display_message ${BLUE} "[*] Syncing"
+sleep 0.5
+display_message ${BLUE} "[*] Collecting packages"
+display_message ${BLUE} "[*] Preparing files"
+sleep 0.5
+display_message ${BLUE} "[*] Providing ROOT access"
+display_message ${BLUE} "[*] DONE\n"
+
+# Wait for user input and provide root access accordingly
+while true; do
+    display_message ${BLUE} "Please select the type of root access you want to use:"
+    display_message ${YELLOW} "1) Fake root access"
+    display_message ${YELLOW} "2) Real root access"
+    read -p "> " choice
+
+    case $choice in
+        1) # Execute the "fakeroot" command
+            display_message ${GREEN} "\n[+] Executing 'fakeroot' command...\n"
+            fakeroot
+            break
+            ;;
+        2) # Execute the "su" command
+            display_message ${GREEN} "\n[+] Executing 'su' command...\n"
+            su
+            break
+            ;;
+        *) # Invalid input
+            display_message ${YELLOW} "\n[-] Invalid input. Please try again.\n"
+            ;;
+    esac
+done
+
+# Display some final messages
+display_message ${YELLOW} "\n[+] Thank you for using ROOT TERMUX\n"
+display_message ${BLUE} " YouTube: Adarsh Addee"
+display_message ${BLUE} " YouTube: Mr Idealhat"
+display_message ${BLUE} " YouTube: Mr Ideal\n"
